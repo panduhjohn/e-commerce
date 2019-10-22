@@ -17,13 +17,16 @@
           </a>
           <div class="card-body">
             <h5 class="card-title">Name: <%= products[i].name %></h5>
-            <p class="card-text">Category: <%= products[i].category %></p>
+            <p class="card-text">Category: <%= products[i].category.name %></p>
+            
             <p class="card-text">$ <%= products[i].price %></p>
-            <a href="/api/product/" class="btn btn-primary">Shop</a>
+
+            <a href="/api/products/5dae1578534a8c4ef4404124" class="btn btn-primary">Shop</a>
           </div>
         </div>
       </div>
       <% } %>
+
     </div>
   </body>
   <% include ../partials/footer %>

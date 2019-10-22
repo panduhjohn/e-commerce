@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser')
 const methodOverride = require('method-override')
 const expressValidator = require('express-validator')
 
+
 const MongoStore = require('connect-mongo')(session)
 
 const indexRouter = require('./routes')
@@ -42,6 +43,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(methodOverride('_method'))
+
 
 app.use(
   session({

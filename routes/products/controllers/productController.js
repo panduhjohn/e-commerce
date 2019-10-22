@@ -1,5 +1,6 @@
 const Product = require('../../products/models/Product')
-const faker = require('faker')
+
+const paginate = require('../utils/pagination')
 
 module.exports = {
   createProductByCategoryId: (req, res) => {
@@ -23,12 +24,14 @@ module.exports = {
 
   //? http://localhost:3000/api/admin/get-all-categories
   getAllProducts: (req, res) => {
-    Product.find({}).populate('category').exec((error, products) => {
-      if (error) throw error
+    Product.find({})
+      .populate('category')
+      .exec((error, products) => {
+        if (error) throw error
 
-      // console.log('dog', products)
-      res.render('products/products', { products: products })
-    })
+        // console.log('dog', products)
+        res.render('products/products', { products: products })
+      })
   },
 
   //?  http://localhost:3000/api/products/5dadd3b9d90a5c308c7e1cba
@@ -44,17 +47,23 @@ module.exports = {
 
   //?  http://localhost:3000/api/products/getproductsbycategoryid/5da89aa69baff90840f4dbed
   getByCategoryId: (req, res) => {
-    Product.find({ category: req.params.id }).populate('category').exec((error, products) => {
-      if (error) throw error
+    Product.find({ category: req.params.id })
+      .populate('category')
+      .exec((error, products) => {
+        if (error) throw error
 
-      res.render('products/products', { products: products })
-    })
+        res.render('products/products', { products: products })
+      })
   },
 
   getPageIfUserLoggedIn: (req, res, next) => {
     if (req.user) paginate(req, res, next)
     else res.render('index')
-  }
+  },
+
+  
+
+
 
   // api/product/deleteproductbyid
   // deleteProduct: (req, res) => {
