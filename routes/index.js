@@ -8,6 +8,6 @@ const paginate = require('./products/utils/pagination')
 /* GET home page. */
 router.get('/', productController.getPageIfUserLoggedIn)
 
-router.get('page/:page', paginate)
+router.get('/page/:page', paginate)
 
 module.exports = router

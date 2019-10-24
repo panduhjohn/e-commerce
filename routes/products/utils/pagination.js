@@ -2,7 +2,7 @@ const Product = require('../models/Product')
 
 const paginate = (req, res) => {
   let perPage = 9
-  let page = req.params.page
+  let page = req.params.page || 1
 
   Product.find()
     .skip(perPage * (page - 1))
@@ -17,9 +17,9 @@ const paginate = (req, res) => {
           res.render('products/product-main', {
             products: products,
             pages: Math.ceil(count / perPage),
-            current: page,
-            nextPage: page + 1,
-            previousPage: page - 1
+            current: Number(page),
+            nextPage: Number(page) + 1,
+            previousPage: Number(page) - 1
           })
         })
         .catch(err => {

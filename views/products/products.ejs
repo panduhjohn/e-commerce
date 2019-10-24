@@ -9,11 +9,7 @@
       <div class="col">
         <div class="card" style="width: 18rem;">
           <a href="/api/product/">
-            <img
-              class="card-img-top"
-              src="<%= products[i].image %>"
-              alt="Card image cap"
-            />
+            <img class="card-img-top" src="/public/images/mal.jpeg" alt="Card image cap"/>
           </a>
           <div class="card-body">
             <h5 class="card-title">Name: <%= products[i].name %></h5>
@@ -21,7 +17,7 @@
             
             <p class="card-text">$ <%= products[i].price %></p>
 
-            <a href="/api/products/5dae1578534a8c4ef4404124" class="btn btn-primary">Shop</a>
+            <a href="/api/products/<%= products[i].id %>" class="btn btn-primary">Shop</a>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ const router  = express.Router();
 
 const userController   = require('./controllers/userController')
 const signupValidation = require('./utils/signupValidation')
+const cartController = require('../cart/controllers/cartController')
 
 const User = require('./models/User')
 
@@ -18,7 +19,7 @@ router.get('/signup', (req, res) => {
     res.render('auth/signup', { error_msg: null })
 })
 
-router.post('/signup', signupValidation, userController.signup)
+router.post('/signup', signupValidation, userController.signup, cartController.createUserCart)
 
 router.get('/signin', (req, res) => {
     if (req.isAuthenticated()) res.redirect('/')

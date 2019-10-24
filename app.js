@@ -10,15 +10,17 @@ const cookieParser = require('cookie-parser')
 const methodOverride = require('method-override')
 const expressValidator = require('express-validator')
 
-
 const MongoStore = require('connect-mongo')(session)
 
 const indexRouter = require('./routes')
 const usersRouter = require('./routes/users/users')
 const adminRouter = require('./routes/admin/admin')
+const cartRouter = require('./routes/cart/cart')
 const productsRouter = require('./routes/products/products')
 
 const Category = require('./routes/products/models/Category')
+
+const cartMiddleware = require('./routes/cart/utils/cartMiddleware')
 
 require('dotenv').config()
 
@@ -95,6 +97,9 @@ app.use((req, res, next) => {
   res.locals.loginMessage = req.flash('loginMessage')
   res.locals.errorValidate = req.flash('errorValidate')
 
+  console.log('res locals', res.locals);
+  
+
   next()
 })
 
@@ -102,19 +107,20 @@ app.use((req, res, next) => {
   Category.find({})
     .then(categories => {
       // console.log(`res.locals.categories`, res.locals.categories)
-
       res.locals.categories = categories
-      console.log(res.locals.categories)
-
+      // console.log(res.locals.categories)
       next()
     })
     .catch(error => next(error))
 })
 
+app.use(cartMiddleware)
+
 app.use('/', indexRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/admin', adminRouter)
 app.use('/api/products', productsRouter)
+app.use('/api/cart', cartRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -126,8 +132,6 @@ app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
-
-  // TODO: add flash
 
   // render the error page
   res.status(err.status || 500)

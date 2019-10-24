@@ -39,7 +39,7 @@ module.exports = {
                                                     message: err
                                                 })
                                             } else {
-                                                res.redirect(301, '/')
+                                                next()
                                             }
                                         })
                                     })

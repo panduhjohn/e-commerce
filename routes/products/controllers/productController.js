@@ -36,11 +36,11 @@ module.exports = {
 
   //?  http://localhost:3000/api/products/5dadd3b9d90a5c308c7e1cba
   getById: (req, res) => {
-    console.log(req.params)
-
+    // console.log(req.params)
     Product.findById(req.params.id, (error, product) => {
       if (error) throw error
-
+      console.log('product', product);
+      
       res.render('products/product', { product: product })
     })
   },
@@ -59,11 +59,7 @@ module.exports = {
   getPageIfUserLoggedIn: (req, res, next) => {
     if (req.user) paginate(req, res, next)
     else res.render('index')
-  },
-
-  
-
-
+  }
 
   // api/product/deleteproductbyid
   // deleteProduct: (req, res) => {
