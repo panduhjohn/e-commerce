@@ -4,7 +4,6 @@
 
     <% for (let s of success) { %>
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
-
         <%= s %>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -14,16 +13,14 @@
 
     <% for (let error of errors) { %>
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
-
         <%= error %>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <% } %>
+        <% } %>
 
     <ul class="list-group">
-         
             <% for(let category of categories) { %>
             <% let link = `/${category.name}/${category._id}` %>
         <li class="list-group-item">

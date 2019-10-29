@@ -1,9 +1,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="/">Code Immersives</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
    
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
@@ -13,22 +11,15 @@
 
         <li class="nav-item">
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categories
-            </button>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
               <% for(let category of categories) { %>
               <a class="dropdown-item" href="/api/products/getproductsbycategoryid/<%= category.id %>"><%= category.name %></a>
               <% } %>
-
-
             </div>
-        </div>
+          </div>
         </li>
-
       </ul>
-   
     </div>
 
     <form class='form-inline my-2 my-lg-0' action="/api/product/search" method="POST">
@@ -48,20 +39,15 @@
             </li>                   
         <% } else { %>
             <li class="nav-item">
-                    <a href="/api/users/edit-profile" class="nav-link">Logged in as <span style="color: red"><%= user.email %></span></a>
-                  </li> 
-                  
-
-
-                  <li class="nav-item">
-                    <a href="/api/cart">
-                      <span class="fa-stack has-badge" data-count="<%= cartTotal %>">
-                        <i class="fas fa-cart-plus"></i>
-                      </span>
-                    </a>
-
-                  </li>
-                  
+              <a href="/api/users/edit-profile" class="nav-link">Logged in as <span style="color: red"><%= user.email %></span></a>
+            </li> 
+              <li class="nav-item">
+                <a href="/api/cart">
+                  <span class="fa-stack has-badge" data-count="<%= cartTotal %>">
+                    <i class="fas fa-cart-plus"></i>
+                  </span>
+                </a>
+              </li>
             <li class="nav-item">
               <a href="/api/users/logout" class="nav-link">Logout</a>
             </li> 
@@ -69,5 +55,3 @@
         </ul>
     </div>
 </nav>
-<br>
-<br>

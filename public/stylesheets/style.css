@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  background: -webkit-linear-gradient(right, red, blue)
+  background: -webkit-linear-gradient(right, rgb(180, 166, 166), blue)
 }
 
 .row {

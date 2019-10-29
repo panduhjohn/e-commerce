@@ -9,7 +9,7 @@ module.exports = {
       newProduct.category = req.params.categoryID
       newProduct.name = faker.commerce.productName()
       newProduct.price = faker.commerce.price()
-      newProduct.image = faker.image.image()
+      newProduct.image = faker.image.image() 
 
       newProduct.save().catch(err => {
         throw err
@@ -26,14 +26,13 @@ module.exports = {
     Product.find({}).populate('category').exec((error, products) => {
       if (error) throw error
 
-      // console.log('dog', products)
       res.render('products/products', { products: products })
     })
   },
 
   //?  http://localhost:3000/api/products/5dadd3b9d90a5c308c7e1cba
   getById: (req, res) => {
-    console.log(req.params)
+    // console.log(req.params)
 
     Product.findById(req.params.id, (error, product) => {
       if (error) throw error

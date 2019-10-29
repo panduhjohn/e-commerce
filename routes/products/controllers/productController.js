@@ -39,7 +39,7 @@ module.exports = {
     // console.log(req.params)
     Product.findById(req.params.id, (error, product) => {
       if (error) throw error
-      console.log('product', product);
+      // console.log('product', product);
       
       res.render('products/product', { product: product })
     })
@@ -63,7 +63,7 @@ module.exports = {
 
   // api/product/deleteproductbyid
   // deleteProduct: (req, res) => {
-  //   Product.find({ category: req.params.id }).deleteProduct('id')
+  //   Product.find({ category: req.params.id }).deleteProduct()
 
   //   res.render('products/products', { products: products })
   // }

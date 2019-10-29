@@ -4,10 +4,10 @@ const logger = require('morgan')
 const express = require('express')
 const session = require('express-session')
 const mongoose = require('mongoose')
-const passport = require('passport')
-const createError = require('http-errors')
+const passport = require('passport') // Passport is Express-compatible authentication middleware for Node.js.
+const createError = require('http-errors') // create errors
 const cookieParser = require('cookie-parser')
-const methodOverride = require('method-override')
+const methodOverride = require('method-override') //Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
 const expressValidator = require('express-validator')
 
 const MongoStore = require('connect-mongo')(session)
@@ -53,7 +53,8 @@ app.use(
     saveUninitialized: true,
     secret: process.env.SESSION_SECRET,
     store: new MongoStore({
-      url: process.env.MONGODB_URI,
+      // url: process.env.MONGODB_URI
+      mongooseConnection: mongoose.connection,
       autoReconnect: true
     }),
     cookie: {
@@ -97,7 +98,7 @@ app.use((req, res, next) => {
   res.locals.loginMessage = req.flash('loginMessage')
   res.locals.errorValidate = req.flash('errorValidate')
 
-  console.log('res locals', res.locals);
+  // console.log('res locals', res.locals);
   
 
   next()
