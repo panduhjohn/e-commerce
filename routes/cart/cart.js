@@ -7,7 +7,6 @@ const router = express.Router()
 
 const async = require('async')
 
-
 const stripe = require('stripe')(process.env.STRIPE_SK) //* use secret stripe key
 
 const cartController = require('./controllers/cartController')
@@ -65,7 +64,7 @@ router.post('/payment', (req, res, next) => {
         },
         cart => {
           //? erase everything in cart.items
-          Cart.update(
+          cart.update(
             {
               $set: {
                 items: [],
@@ -76,6 +75,7 @@ router.post('/payment', (req, res, next) => {
               if (updated) res.render('thanks')
             }
           )
+
           //? add message that cart was charged.
         }
       ])

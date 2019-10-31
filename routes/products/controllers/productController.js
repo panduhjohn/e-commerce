@@ -40,7 +40,7 @@ module.exports = {
     Product.findById(req.params.id, (error, product) => {
       if (error) throw error
       // console.log('product', product);
-      
+
       res.render('products/product', { product: product })
     })
   },
@@ -59,6 +59,34 @@ module.exports = {
   getPageIfUserLoggedIn: (req, res, next) => {
     if (req.user) paginate(req, res, next)
     else res.render('index')
+  },
+
+  searchProductByQuery: (req, res) => {
+    if (req.query.q) {
+      Product.search(
+        {
+          query_string: {
+            query: req.query.q
+          }
+        },
+        (error, results) => {
+          if (error) {
+            let errors = {}
+            errors.status = 500
+            errors.message = error
+
+            res.status(errors.status).json(errors)
+          } else {
+            let data = results.hits.hits
+
+            res.render('search/search-results', {
+              results: data,
+              query: req.query.q
+            })
+          }
+        }
+      )
+    }
   }
 
   // api/product/deleteproductbyid

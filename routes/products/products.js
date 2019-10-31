@@ -5,8 +5,11 @@ const productController = require('../products/controllers/productController')
 
 router.get('/', createProductController.getAllProducts)
 
+router.get('/search', productController.searchProductByQuery)
+
 router.get('/:id', productController.getById)
 
-router.get('/getproductsbycategoryid/:id',createProductController.getByCategoryId)
+router.get('/getproductsbycategoryid/:id', createProductController.getByCategoryId)
+
 
 module.exports = router
