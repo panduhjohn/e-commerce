@@ -5,7 +5,6 @@ $(document).on('click', '#plus', (event) => {
     priceValue += parseFloat($('#priceHidden').val())
     quantity++
 
-    
     $('#quantity').val(quantity)
     $('#priceValue').val(priceValue.toFixed(2))
     $('#total').html(quantity)

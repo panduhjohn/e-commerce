@@ -57,6 +57,7 @@ module.exports = {
         throw err
       })
   },
+  
   // We do not use it. Instead we use passport.authenticate().
   signin: params => {
     return new Promise((resolve, reject) => {
@@ -88,6 +89,7 @@ module.exports = {
         .catch(err => reject(err))
     })
   },
+
   updateProfile: (params, id) => {
     return new Promise((resolve, reject) => {
       User.findById(id).then(user => {

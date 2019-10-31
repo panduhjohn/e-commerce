@@ -1,5 +1,4 @@
 const categoryValidation = (req, res, next) => {
-    
     req.checkBody('name', 'Category cannot be empty').notEmpty()
 
     const errorValidate = req.validationErrors()

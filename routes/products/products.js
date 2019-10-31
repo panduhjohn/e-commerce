@@ -7,9 +7,6 @@ router.get('/', createProductController.getAllProducts)
 
 router.get('/:id', productController.getById)
 
-router.get(
-  '/getproductsbycategoryid/:id',
-  createProductController.getByCategoryId
-)
+router.get('/getproductsbycategoryid/:id',createProductController.getByCategoryId)
 
 module.exports = router

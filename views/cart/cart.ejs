@@ -12,7 +12,6 @@
           </button>
           <%= message %>
         </div>
-        
         <% } %>
         <table id="cart" class="table table-hover table-condensed">
                   <thead>
@@ -26,8 +25,7 @@
                 </thead>
                 <tbody>
                     <% for(let i = 0; i < foundCart.items.length; i++) { 
-                        let cartItem = foundCart.items[i]    
-                    %>
+                        let cartItem = foundCart.items[i] %>
                       <tr>
                         <td data-th="cartItem">
                           <div class="row">

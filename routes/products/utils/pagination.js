@@ -4,7 +4,8 @@ const paginate = (req, res) => {
   let perPage = 9
   let page = req.params.page || 1
 
-  Product.find()
+  Product
+    .find()
     .skip(perPage * (page - 1))
     .limit(perPage)
     .populate('category')

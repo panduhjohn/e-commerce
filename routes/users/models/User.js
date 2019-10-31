@@ -15,10 +15,9 @@ let UserSchema = new mongoose.Schema({
       paid: { type: Number, default: 0 },
     }
   ],
-  timestamp: {
-    type: String,
-    default: () => moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
-  }
+  timestamp: { type: String, default: () => moment().format('dddd, MMMM Do YYYY, h:mm:ss a')}
 })
 
 module.exports = mongoose.model('user', UserSchema)
+
+//schema is another word for template

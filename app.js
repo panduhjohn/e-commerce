@@ -1,7 +1,7 @@
 const path = require('path')
 const flash = require('connect-flash')
 const logger = require('morgan')
-const express = require('express')
+const express = require('express') 
 const session = require('express-session')
 const mongoose = require('mongoose')
 const passport = require('passport') // Passport is Express-compatible authentication middleware for Node.js.
@@ -33,6 +33,7 @@ mongoose
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(`MongoDB Error: ${err}`))
 
+//! instantiate express
 const app = express()
 
 // view engine setup
@@ -40,8 +41,11 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 app.use(logger('dev'))
+
+//? these 2 lines are required to get information from POST
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(methodOverride('_method'))
